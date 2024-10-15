@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container mt-3">
+        <div class="card bg-secondary">
+            <div class="card-body" style="align-self: center;">
+            <input class="inp" type="text" id="out" placeholder="Result" disabled><br><br>
+            <label class="label" for="num1">Enter 1<sup>st</sup> number</label>
+            <input class="inp" id="num1" type="number"><br><br>
+            <label class="label" for="num2">Enter 2<sup>nd</sup> number</label>
+            <input class="inp" id="num2" type="number"><br>
+
+            <div id="btm">
+                <select name="operators" id="select">
+                    <option value="">select</option>
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">x</option>
+                    <option value="/">/</option>
+                </select>
+                <input type="button" value="=" onclick="calculate()">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function calculate() {
+            const a = document.getElementById('num1').value;
+            const b = document.getElementById('num2').value;
+            const sy = document.getElementById('select').value;
+
+            let res;
+
+            switch (sy) {
+                case "+":
+                    res = (parseFloat(a) + parseFloat(b)).toFixed(2);
+                    break;
+
+                case "-":
+                    res = (parseFloat(a) - parseFloat(b)).toFixed(2);
+                    break;
+
+                case "*":
+                    res = (parseFloat(a) * parseFloat(b)).toFixed(2);
+                    break;
+
+                case "/":
+                    if (b == 0) {
+                        res = "Zero Division Error";
+                    } else {
+                        res = (parseFloat(a) / parseFloat(b)).toFixed(2);
+                    }
+                    break;
+
+                default:
+                    res = "Invalid Operation";
+            }
+
+            document.getElementById("out").value = res;
+        }
+    </script>
+</body>
+
+</html>
